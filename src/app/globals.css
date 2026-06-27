@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
+/* EDENZATECH — balanced light theme with cyan accent */
 :root {
+  --header-height: 4.5rem;
+  --brand-cyan: #00e5ff;
+  --brand-blue: #0052ff;
+  --brand-navy: #072b52;
+  --brand-cream: #fefbf3;
+  --brand-black: #0a0a0f;
+  --brand-dark: #1e293b;
+  --brand-surface: #ffffff;
+  --brand-elevated: #f8fafc;
+  --brand-soft: #f1f5f9;
+  --brand-white: #ffffff;
+  --brand-muted: #64748b;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --muted: var(--brand-muted);
+  --surface: var(--brand-surface);
+  --accent: var(--brand-cyan);
+  --accent-foreground: var(--brand-black);
+  --border: rgba(15, 23, 42, 0.1);
+  --gradient-brand: linear-gradient(135deg, #00e5ff 0%, #0052ff 100%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-black: var(--brand-black);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-elevated: var(--brand-elevated);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-white: var(--brand-white);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-poppins);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), "Poppins", system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand-cyan) 35%, transparent);
+  color: var(--brand-black);
+}
+
+.heading-display {
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.heading-section {
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-brand-gradient {
+  background: var(--gradient-brand);
+}
+
+.section-light {
+  background: var(--brand-white);
+}
+
+.section-soft {
+  background: var(--brand-soft);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 5rem;
+  }
+}
+
+.min-h-hero-screen {
+  min-height: calc(100dvh - var(--header-height));
+}
+
+@keyframes testimonial-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-testimonial-marquee {
+  animation: testimonial-marquee 45s linear infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pause-on-hover:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-testimonial-marquee,
+  .animate-float {
+    animation: none;
+  }
+
+  .animate-testimonial-marquee {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
 }
