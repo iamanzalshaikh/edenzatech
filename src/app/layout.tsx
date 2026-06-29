@@ -4,6 +4,7 @@ import { AppProviders } from "@/components/providers/app-providers";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ScrollToTop } from "@/components/home/scroll-to-top";
+import { WhatsAppWidget } from "@/components/ui/whatsapp-widget";
 import { siteConfig } from "@/lib/site-config";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import "./globals.css";
@@ -58,6 +59,8 @@ export default function RootLayout({
           <Footer />
           <ScrollToTop />
         </AppProviders>
+        {/* WhatsApp widget lives outside AppProviders so fixed positioning is never clipped */}
+        <WhatsAppWidget />
       </body>
     </html>
   );

@@ -66,6 +66,23 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
     }
   }, [pathname]);
 
+  // Use ResizeObserver to automatically resize Lenis on any body element height/width changes (e.g. loader fade, images loading)
+  useEffect(() => {
+    if (typeof window === "undefined" || !document.body) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (lenisRef.current) {
+        lenisRef.current.resize();
+      }
+    });
+
+    resizeObserver.observe(document.body);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
+
   return (
     <ScrollContextProvider value={{ scrollToTop }}>{children}</ScrollContextProvider>
   );

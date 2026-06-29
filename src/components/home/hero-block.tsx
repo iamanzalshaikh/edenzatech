@@ -139,7 +139,7 @@ export function HeroBlock() {
             {/* Main Headline */}
             <motion.h1
               variants={fadeUp}
-              className="mt-6 text-[2.5rem] font-bold leading-[1.1] tracking-tight sm:text-[3.5rem] md:text-[4rem] xl:text-[4.2rem]"
+              className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-[3.5rem] md:text-[4rem] xl:text-[4.2rem]"
             >
               We build custom <br className="hidden md:inline" />
               <span className="relative inline-block border border-brand-cyan bg-brand-cyan/10 px-3 pb-[0.1rem] pt-[0.2rem] font-mono text-white">

@@ -53,6 +53,8 @@ export default function ContactPage() {
     }
   };
 
+  const whatsappUrl = "https://wa.me/917045475587?text=Hi%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20Edenzatech.";
+
   return (
     <div className="bg-[#FFFDF8] min-h-screen pb-20">
       
@@ -74,11 +76,11 @@ export default function ContactPage() {
 
       <section className="py-16 bg-white">
         <Container>
-          <div className="max-w-5xl mx-auto grid gap-12 lg:grid-cols-[380px_1fr] items-start">
+          <div className="max-w-5xl mx-auto grid gap-8 lg:gap-12 grid-cols-1 lg:grid-cols-[380px_1fr] items-start">
             
             {/* Left Column: Coordinates */}
             <div className="space-y-6">
-              <div className="rounded-[2rem] bg-[#F5FAF9] p-7 shadow-sm">
+              <div className="rounded-[1.5rem] sm:rounded-[2rem] bg-[#F5FAF9] p-5 sm:p-7 shadow-sm">
                 <h2 className="text-xl font-bold text-brand-blue mb-6">Direct Coordinates</h2>
                 
                 <div className="space-y-5">
@@ -117,7 +119,7 @@ export default function ContactPage() {
               </div>
 
               {/* Consultation Link Callout */}
-              <div className="rounded-[2.5rem] bg-brand-gradient text-white p-7 text-center shadow-sm relative overflow-hidden">
+              <div className="rounded-[1.5rem] sm:rounded-[2.5rem] bg-brand-gradient text-white p-5 sm:p-7 text-center shadow-sm relative overflow-hidden">
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-brand-cyan mb-2">Detailed Blueprint Plan</p>
                 <h3 className="text-lg font-bold">Need a full product spec estimation?</h3>
                 <p className="mt-2 text-xs text-white/80 leading-relaxed">
@@ -133,7 +135,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="rounded-[2.5rem] bg-[#F5FAF9] p-8 shadow-sm relative overflow-hidden">
+            <div className="rounded-[1.5rem] sm:rounded-[2.5rem] bg-[#F5FAF9] p-5 sm:p-8 shadow-sm relative overflow-hidden">
               
               {submitted ? (
                 <div className="text-center py-12 flex flex-col items-center">

@@ -172,6 +172,18 @@ type RenderNode = {
   description: string;
 };
 
+function MobileConnector({ active }: { active: boolean }) {
+  return (
+    <div className="flex justify-center lg:hidden my-2 z-10">
+      <div className={`w-[2px] h-8 transition-all duration-500 rounded-full ${
+        active 
+          ? "bg-brand-orange shadow-[0_0_10px_rgba(224,122,46,0.5)]" 
+          : "bg-brand-muted/20"
+      }`} />
+    </div>
+  );
+}
+
 export function EdenzaStandardSection() {
   const [isRunning, setIsRunning] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
@@ -213,6 +225,7 @@ export function EdenzaStandardSection() {
   };
 
   const calculatePaths = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 1024) return;
     const container = containerRef.current;
     if (!container) return;
     const containerRect = container.getBoundingClientRect();
@@ -361,7 +374,7 @@ export function EdenzaStandardSection() {
         <div
           id="diagram-canvas"
           ref={containerRef}
-          className="relative mt-16 overflow-x-auto pb-10 pt-4 scrollbar-none lg:overflow-visible"
+          className="relative mt-16 pb-10 pt-4 lg:overflow-visible"
         >
           {/* SVG Background Connections (Layer behind cards) */}
           <div className="absolute inset-0 z-0 pointer-events-none hidden lg:block">
@@ -395,7 +408,7 @@ export function EdenzaStandardSection() {
             </svg>
           </div>
 
-          <div className="relative min-w-[1100px] lg:min-w-0 grid grid-cols-7 items-center gap-4 lg:gap-6 px-4">
+          <div className="relative flex flex-col lg:grid lg:grid-cols-7 items-stretch lg:items-center gap-2 lg:gap-6 px-4 max-w-md mx-auto lg:max-w-none">
             
             {/* Column 0: Trigger Node (Interactive Button) */}
             <div className="z-10 flex justify-center">
@@ -426,30 +439,42 @@ export function EdenzaStandardSection() {
               </button>
             </div>
 
+            <MobileConnector active={activeStep >= 1} />
+
             {/* Column 1: Pre-Commit Gates */}
-            <div className="z-10 flex flex-col gap-5 justify-center">
+            <div className="z-10 flex flex-col gap-4 lg:gap-5 justify-center">
               {column1Nodes.map(item => renderColNode(item, 1))}
             </div>
 
+            <MobileConnector active={activeStep >= 2} />
+
             {/* Column 2: Code Performance & Mobile Optimization */}
-            <div className="z-10 flex flex-col gap-5 justify-center">
+            <div className="z-10 flex flex-col gap-4 lg:gap-5 justify-center">
               {column2Nodes.map(item => renderColNode(item, 2))}
             </div>
 
+            <MobileConnector active={activeStep >= 3} />
+
             {/* Column 3: User Journey & Identity */}
-            <div className="z-10 flex flex-col gap-5 justify-center">
+            <div className="z-10 flex flex-col gap-4 lg:gap-5 justify-center">
               {column3Nodes.map(item => renderColNode(item, 3))}
             </div>
 
+            <MobileConnector active={activeStep >= 4} />
+
             {/* Column 4: Security Shield & Credentials */}
-            <div className="z-10 flex flex-col gap-5 justify-center">
+            <div className="z-10 flex flex-col gap-4 lg:gap-5 justify-center">
               {column4Nodes.map(item => renderColNode(item, 4))}
             </div>
 
+            <MobileConnector active={activeStep >= 5} />
+
             {/* Column 5: Cloud Host & CDN */}
-            <div className="z-10 flex flex-col gap-5 justify-center">
+            <div className="z-10 flex flex-col gap-4 lg:gap-5 justify-center">
               {column5Nodes.map(item => renderColNode(item, 5))}
             </div>
+
+            <MobileConnector active={activeStep >= 6} />
 
             {/* Column 6: Output Deployment Node */}
             <div className="z-10 flex justify-center">

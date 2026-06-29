@@ -154,8 +154,8 @@ export function WhyChooseSection() {
           <OrbittButton href="/contact" variant="solid">
             Start Your Project
           </OrbittButton>
-          <OrbittButton href="/case-studies" variant="light-outline">
-            View Case Studies
+          <OrbittButton href="/projects" variant="light-outline">
+            View Our Projects
           </OrbittButton>
         </div>
 

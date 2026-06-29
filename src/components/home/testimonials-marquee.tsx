@@ -31,7 +31,7 @@ function TestimonialCard({
   return (
     <article
       className={cn(
-        "flex w-[min(100%,300px)] shrink-0 flex-col rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:w-[340px] sm:p-6",
+        "flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6",
         className,
       )}
     >
@@ -78,12 +78,18 @@ const loop = [...items, ...items];
 export function TestimonialsMarquee() {
   return (
     <div className="relative mt-10 overflow-hidden sm:mt-12">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white to-transparent sm:w-20" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white to-transparent sm:w-20" />
+      {/* Fade edges — thinner on mobile so cards are still visible */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent sm:w-20" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-white to-transparent sm:w-20" />
 
-      <div className="flex w-max animate-testimonial-marquee gap-4 pause-on-hover sm:gap-6">
+      {/* Marquee — same scrolling behaviour on all screen sizes */}
+      <div className="flex w-max animate-testimonial-marquee gap-3 pause-on-hover sm:gap-6">
         {loop.map((t, i) => (
-          <TestimonialCard key={`${t.name}-${i}`} {...t} />
+          <TestimonialCard
+            key={`${t.name}-${i}`}
+            {...t}
+            className="w-72 shrink-0 sm:w-[340px]"
+          />
         ))}
       </div>
     </div>

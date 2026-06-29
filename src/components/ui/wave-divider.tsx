@@ -10,7 +10,7 @@ export function WaveDivider({ className, fill = "#fefbf3" }: WaveDividerProps) {
   return (
     <div
       className={cn(
-        "pointer-events-none absolute inset-x-0 bottom-0 z-10 leading-none",
+        "pointer-events-none absolute inset-x-0 bottom-0 z-10 leading-none overflow-hidden",
         className,
       )}
       aria-hidden

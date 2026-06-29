@@ -121,11 +121,83 @@ export function WhatWeBuildSection() {
           </p>
         </div>
 
-        {/* 4-Column Grid System with 3D Flip Cards */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Mobile View: Static cards (dynamic height, no overflow) - Grid format */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:hidden">
           {buildCategories.map((cat, i) => (
             <motion.article
-              key={cat.id}
+              key={`mobile-${cat.id}`}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-2xl bg-white border border-brand-muted/10 p-5 shadow-sm flex flex-col justify-between"
+            >
+              <div>
+                {/* Image */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#ecf3f2] p-2 mb-4 border border-[#e5eeed]">
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="h-full w-full object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Info */}
+                <span className="text-[9px] font-bold tracking-widest text-brand-orange uppercase">
+                  {cat.label}
+                </span>
+                <h3 className="mt-1 text-base font-bold text-brand-blue leading-snug">
+                  {cat.title}
+                </h3>
+                <p className="mt-2 text-xs text-brand-muted leading-relaxed">
+                  {cat.description}
+                </p>
+
+                {/* Sub-services list */}
+                <div className="mt-4 border-t border-brand-muted/5 pt-3">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-brand-blue block mb-2">Capabilities</span>
+                  <ul className="space-y-1.5 text-left">
+                    {cat.subServices.map((sub) => (
+                      <li key={sub} className="text-xs text-brand-muted flex items-center gap-2">
+                        <span className="h-1 w-1 bg-brand-orange rounded-full shrink-0" />
+                        <span>{sub}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Standards list */}
+                <div className="mt-4 border-t border-brand-muted/5 pt-3">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-brand-blue block mb-2">Key Standards</span>
+                  <ul className="space-y-1.5 text-left">
+                    {cat.hoverSpecs.map((spec) => (
+                      <li key={spec} className="text-xs text-brand-muted flex items-start gap-2">
+                        <Check className="h-3.5 w-3.5 text-brand-orange shrink-0 mt-0.5" />
+                        <span>{spec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Button */}
+              <div className="mt-6 pt-4 border-t border-brand-muted/5 text-left">
+                <Link
+                  href={cat.href}
+                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-brand-blue hover:text-brand-orange transition-colors"
+                >
+                  {cat.cta} <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* Desktop View: Interactive 3D Flip cards */}
+        <div className="mt-12 hidden lg:grid lg:grid-cols-4 gap-6">
+          {buildCategories.map((cat, i) => (
+            <motion.article
+              key={`desktop-${cat.id}`}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}

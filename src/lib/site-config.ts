@@ -37,7 +37,7 @@ export const navLinks = [
     ],
   },
   { label: "Projects", href: "/projects" },
-  { label: "Case Studies", href: "/case-studies" },
+  { label: "Industries", href: "/industries" },
   { label: "Contact Us", href: "/contact" },
   { label: "FAQs", href: "/faqs" },
 ] as const;

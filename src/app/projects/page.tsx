@@ -64,7 +64,7 @@ export default function ProjectsPage() {
           {/* Grid Container */}
           <motion.div 
             layout
-            className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+            className="grid gap-4 grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto sm:gap-6 lg:gap-8"
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((proj) => (
@@ -75,46 +75,47 @@ export default function ProjectsPage() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.25 }}
                   key={proj.title}
-                  className={`group relative overflow-hidden rounded-[2.5rem] ${proj.bgClass} p-5 shadow-sm transition-all duration-300 hover:shadow-[0_24px_48px_rgba(26,26,26,0.05)] hover:-translate-y-1.5 flex flex-col justify-between`}
+                  className={`group relative overflow-hidden rounded-[1.5rem] sm:rounded-[2.5rem] ${proj.bgClass} p-3 sm:p-5 shadow-sm transition-all duration-300 hover:shadow-[0_24px_48px_rgba(26,26,26,0.05)] hover:-translate-y-1.5 flex flex-col justify-between`}
                 >
                   <div>
                     {/* Image container */}
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1.8rem] bg-white shadow-sm mb-5">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1rem] sm:rounded-[1.8rem] bg-white shadow-sm mb-3 sm:mb-5">
                       <Image
                         src={proj.image}
                         alt={`${proj.title} Showcase Mockup`}
                         fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     </div>
 
                     {/* Header info */}
-                    <div className="px-1.5">
-                      <div className="flex items-center gap-2 mb-2.5">
-                        <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-brand-blue shadow-sm">
-                          <Sparkles className="h-2.5 w-2.5 text-brand-orange fill-current" />
-                          {proj.categoryLabel}
+                    <div className="px-0.5 sm:px-1.5">
+                      <div className="flex items-center gap-1.5 mb-1.5 sm:mb-2.5">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[8px] sm:text-[9px] font-extrabold uppercase tracking-wide text-brand-blue shadow-sm">
+                          <Sparkles className="h-2 w-2 sm:h-2.5 sm:w-2.5 text-brand-orange fill-current" />
+                          <span className="hidden sm:inline">{proj.categoryLabel}</span>
+                          <span className="sm:hidden">{proj.category.toUpperCase()}</span>
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-bold text-brand-blue leading-snug group-hover:text-brand-orange transition-colors">
+                      <h3 className="text-xs sm:text-base lg:text-lg font-bold text-brand-blue leading-snug group-hover:text-brand-orange transition-colors line-clamp-2">
                         {proj.title}
                       </h3>
                       
-                      <p className="text-xs font-semibold text-[#134D4A] mt-1">
+                      <p className="text-[10px] sm:text-xs font-semibold text-[#134D4A] mt-1 hidden sm:block">
                         ★ {proj.metric}
                       </p>
 
-                      <p className="mt-3.5 text-xs text-brand-muted leading-relaxed">
+                      <p className="mt-2 sm:mt-3.5 text-[10px] sm:text-xs text-brand-muted leading-relaxed hidden sm:block line-clamp-3">
                         {proj.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="px-1.5 mt-6">
+                  <div className="px-0.5 sm:px-1.5 mt-3 sm:mt-6">
                     {/* Tech stack chips */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
+                    <div className="hidden sm:flex flex-wrap gap-1.5 mb-4 sm:mb-6">
                       {proj.tags.map((tag) => (
                         <span 
                           key={tag}
@@ -125,20 +126,20 @@ export default function ProjectsPage() {
                       ))}
                     </div>
 
-                    <div className="pt-4 border-t border-brand-muted/5 flex justify-between items-center">
+                    <div className="pt-2 sm:pt-4 border-t border-brand-muted/5 flex justify-between items-center">
                       {proj.href && proj.href !== "#" ? (
                         <a
                           href={proj.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85`}
+                          className={`inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85`}
                         >
                           Launch Project <ChevronArrow className="h-3 w-3" />
                         </a>
                       ) : (
                         <Link
                           href="/contact"
-                          className={`inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85`}
+                          className={`inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85`}
                         >
                           Inquire Details <ChevronArrow className="h-3 w-3" />
                         </Link>

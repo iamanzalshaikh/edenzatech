@@ -12,7 +12,7 @@ export interface ProjectItem {
   href: string;
 }
 
-export const projectsList: ProjectItem[] = [
+const rawProjectsList: ProjectItem[] = [
   {
     title: "Clawbot – AI Lead Management",
     category: "saas",
@@ -428,5 +428,157 @@ export const projectsList: ProjectItem[] = [
     textClass: "text-[#134D4A]",
     tags: ["React", "Webcam API", "Tensorflow.js", "Express"],
     href: "#"
+  },
+  {
+    title: "QBite – Full-Stack Food Delivery Suite",
+    category: "saas",
+    categoryLabel: "Food Delivery SaaS",
+    description: "A premium multi-tenant food delivery suite featuring a high-performance customer ordering portal (sage-gelato), real-time restaurant partner order dashboard (zomato-restaurant), and a centralized administrative control center (zomato-admin).",
+    image: "/saas-showcase.png",
+    metric: "Multi-Portal Delivery Suite",
+    bgClass: "bg-[#F3F7FD]",
+    iconBg: "bg-[#D1E2FB]",
+    textClass: "text-[#0c4ca6]",
+    tags: ["React.js", "Node.js", "Express", "MongoDB", "Redux", "Real-Time Tracking"],
+    href: "https://sage-gelato-cb0ebc.netlify.app/"
+  },
+  {
+    title: "LetsCrackEnglish – IELTS/CELPIP Exam Prep",
+    category: "web",
+    categoryLabel: "EdTech Platform",
+    description: "An interactive learning web application designed for students preparing for IELTS and CELPIP exams. Features real-time speaking test recording, full mock test papers, and instant score feedback.",
+    image: "/uiux-showcase.png",
+    metric: "IELTS & CELPIP Exam Prep",
+    bgClass: "bg-[#FFF9F5]",
+    iconBg: "bg-[#FEEAD9]",
+    textClass: "text-brand-orange",
+    tags: ["React.js", "TypeScript", "Tailwind CSS", "Audio Recording APIs", "Mock Tests"],
+    href: "https://letscrackenglish.com/"
+  },
+  {
+    title: "ECONS EXIM Gateway – AI Trade Single-Window",
+    category: "saas",
+    categoryLabel: "FinTech Trade SaaS",
+    description: "An AI-powered single-window commerce gateway in association with the Asian Exporters Chamber of Commerce and Industry (AECCI) to simplify and digitize global trade compliance, escrow payments, and shipment logistics.",
+    image: "/saas-showcase.png",
+    metric: "AI-Driven EXIM Single-Window",
+    bgClass: "bg-[#F5FAF9]",
+    iconBg: "bg-[#D2EBE7]",
+    textClass: "text-[#134D4A]",
+    tags: ["React.js", "Node.js", "Express", "AI Compliance Integration", "Escrow Secure Wallet"],
+    href: "https://econs.egcindia.in/"
+  },
+  {
+    title: "E8 Productions – Video & Media Solutions",
+    category: "web",
+    categoryLabel: "Media Agency Site",
+    description: "A premium, media-rich portfolio website for E8 Productions, displaying their full-service videography, video editing pipelines, social media growth cases, and original shows.",
+    image: "/web-showcase.png",
+    metric: "Media & Production Agency",
+    bgClass: "bg-[#FCFAF2]",
+    iconBg: "bg-[#FAF2CD]",
+    textClass: "text-[#b07f18]",
+    tags: ["HTML5", "CSS3", "JavaScript", "Video Production", "SEO Optimization"],
+    href: "https://www.e8productions.com/"
+  },
+  {
+    title: "Nexa Solutions – Custom Web Development",
+    category: "web",
+    categoryLabel: "Agency Web Platform",
+    description: "Custom web development agency showcase highlighting specialized Shopify integrations, responsive corporate portfolios, WordPress custom templates, and performance-first web apps.",
+    image: "/web-showcase.png",
+    metric: "Web Design & Development Agency",
+    bgClass: "bg-[#F5FAF9]",
+    iconBg: "bg-[#D2EBE7]",
+    textClass: "text-[#134D4A]",
+    tags: ["Next.js", "Tailwind CSS", "Shopify", "WordPress", "Custom Software"],
+    href: "https://6a169614fc6b422f237ed91c--roaring-peony-2c53a4.netlify.app/"
+  },
+  {
+    title: "Webyapar Solutions – IT Consulting Suite",
+    category: "web",
+    categoryLabel: "IT Solutions Agency",
+    description: "A modern IT consulting and custom software development landing site outlining custom SaaS projects, AI-powered automation workflows, and mobile application engineering services.",
+    image: "/web-showcase.png",
+    metric: "IT Solutions & Business Migration",
+    bgClass: "bg-[#FFF9F5]",
+    iconBg: "bg-[#FEEAD9]",
+    textClass: "text-brand-orange",
+    tags: ["React.js", "Next.js", "Tailwind CSS", "AI Automation", "Chatbots"],
+    href: "https://webyaparsolutions.com/"
+  },
+  {
+    title: "Orbitt Media – Digital Growth Engine",
+    category: "web",
+    categoryLabel: "Marketing Agency Site",
+    description: "A results-oriented digital marketing agency presentation showing SEO frameworks, performance ads (Meta & Google), social media marketing management, and Google Business Profile optimization cases.",
+    image: "/uiux-showcase.png",
+    metric: "Result-Driven Digital Marketing",
+    bgClass: "bg-[#F3F7FD]",
+    iconBg: "bg-[#D1E2FB]",
+    textClass: "text-[#0c4ca6]",
+    tags: ["Next.js", "SEO Optimization", "Branding Systems", "Google & Meta Ads"],
+    href: "https://6a1d3c658ef33b4ef0c33620--resilient-cheesecake-fd8dec.netlify.app/"
+  },
+  {
+    title: "Hiranandani Westgate – Real Estate Landing",
+    category: "web",
+    categoryLabel: "Real Estate Portal",
+    description: "High-end luxury real estate presentation page highlighting Thane's premium 25-Acre integrated township, featuring interactive podium amenities lists, detailed tower configurations, and smart location guides.",
+    image: "/uiux-showcase.png",
+    metric: "Luxury Real Estate Presentation",
+    bgClass: "bg-[#FCFAF2]",
+    iconBg: "bg-[#FAF2CD]",
+    textClass: "text-[#b07f18]",
+    tags: ["Next.js", "Tailwind CSS", "Interactive Amenities", "Premium Layout"],
+    href: "https://69d79d5d77b5e3567bda1fce--euphonious-lokum-8ffe2b.netlify.app/"
+  },
+  {
+    title: "CIMDR Sangli – DES Educational Portal",
+    category: "web",
+    categoryLabel: "Educational Institution",
+    description: "Chintamanrao Institute of Management Development and Research (CIMDR) website portal containing academic directories, student admission desks, campus placements logs, and NAAC/AICTE accreditation cards.",
+    image: "/web-showcase.png",
+    metric: "DES Management Institute Portal",
+    bgClass: "bg-[#F5FAF9]",
+    iconBg: "bg-[#D2EBE7]",
+    textClass: "text-[#134D4A]",
+    tags: ["Next.js", "Tailwind CSS", "Student Admission Portal", "Placements Desk"],
+    href: "https://glittery-kulfi-0fb52f.netlify.app/"
+  },
+  {
+    title: "Car Bazar – Premium Fleet Rentals",
+    category: "web",
+    categoryLabel: "Rentals Web Platform",
+    description: "An immersive car rental platform showcasing premium fleets (SUVs, sedans, luxury cars), featuring sleek GSAP smooth-scrolling animations, custom pointer behaviors, and responsive contact options.",
+    image: "/uiux-showcase.png",
+    metric: "Premium Car Rental System",
+    bgClass: "bg-[#FFF9F5]",
+    iconBg: "bg-[#FEEAD9]",
+    textClass: "text-brand-orange",
+    tags: ["Next.js", "GSAP Animations", "Fleet Management", "Interactive Cursor"],
+    href: "https://dancing-cajeta-881cb6.netlify.app/"
+  },
+  {
+    title: "WebCastle UAE – Enterprise Web Studio",
+    category: "web",
+    categoryLabel: "Web & E-Commerce Agency",
+    description: "Enterprise-grade web development and custom software engineering studio showcase illustrating Strapi headless CMS systems, custom Magento builds, and Shopify ecommerce designs.",
+    image: "/ecommerce-showcase.png",
+    metric: "Enterprise Web Development UAE",
+    bgClass: "bg-[#F3F7FD]",
+    iconBg: "bg-[#D1E2FB]",
+    textClass: "text-[#0c4ca6]",
+    tags: ["Next.js", "Strapi Headless CMS", "Magento", "ERP Custom Suite"],
+    href: "https://willowy-heliotrope-8af7b2.netlify.app/"
   }
+];
+
+const live = rawProjectsList.filter(p => p.href && p.href !== "#");
+const inquiry = rawProjectsList.filter(p => !p.href || p.href === "#");
+
+export const projectsList: ProjectItem[] = [
+  ...live.slice(0, 10),
+  ...inquiry,
+  ...live.slice(10)
 ];
