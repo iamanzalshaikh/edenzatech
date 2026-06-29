@@ -53,13 +53,13 @@ export default function HomePage() {
       <WhatWeBuildSection />
       <EdenzaStandardSection />
       <StatsSection />
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       <WhyChooseSection />
       <TechnologyArsenalSection />
-      <GrowthProcessSection />
+      {/* <GrowthProcessSection /> */}
       <TestimonialsSection />
       <FinalCtaSection />
-      <FaqSection />
+      {/* <FaqSection /> */}
     </div>
   );
 }

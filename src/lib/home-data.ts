@@ -148,24 +148,48 @@ export const whyChooseUs = [
 export const testimonials = [
   {
     name: "Rahul Mehta",
-    handle: "@rahulmehta_dev",
+    handle: "Product Lead at FinFlow",
     quote:
       "EDENZATECH delivered our SaaS MVP in 6 weeks. Clean code, great communication, and they understood our product vision from day one. We've since scaled to 2,000+ users without a single architecture rewrite.",
     rating: 5,
+    flag: "🇮🇳",
+    location: "India"
+  },
+  {
+    name: "James Bolt Andresson",
+    handle: "CEO at GreenTech Solutions",
+    quote:
+      "Working with Aftab was a game-changer for our online presence. He took the time to understand our brand and created a website that truly reflects our identity. His problem-solving skills and creative approach made the entire process smooth and efficient.",
+    rating: 5,
+    flag: "🇸🇪",
+    location: "Sweden"
+  },
+  {
+    name: "Sarah Jenkins",
+    handle: "Director of Product at FormSync",
+    quote:
+      "Anzal's expertise in full-stack architecture helped us deliver a highly responsive design and seamless user experience for FormSync. His development sprint cycles were precise and highly professional.",
+    rating: 5,
+    flag: "🇨🇦",
+    location: "Canada"
   },
   {
     name: "Priya Sharma",
-    handle: "@priyasharma",
+    handle: "Co-Founder at HealthScale",
     quote:
       "Our React Native app launched on both iOS and Android simultaneously. The team handled complex payment integrations and offline sync flawlessly. Best development partner we've worked with.",
     rating: 5,
+    flag: "🇮🇳",
+    location: "India"
   },
   {
     name: "James Chen",
-    handle: "@jameschen_tech",
+    handle: "VP Engineering at CloudSync",
     quote:
       "They rebuilt our legacy platform with Next.js and cut page load times by 70%. The new admin dashboard alone saved our ops team 15 hours a week. Transparent, skilled, and reliable.",
     rating: 5,
+    flag: "🇺🇸",
+    location: "USA"
   },
 ] as const;
 
@@ -213,9 +237,9 @@ export const faqs = [
 ] as const;
 
 export const homeStats = [
-  { label: "Projects Delivered", value: 150, suffix: "+" },
-  { label: "Years of Experience", value: 6, suffix: "+" },
-  { label: "Client Satisfaction", value: 99, suffix: "%" },
+  { label: "Projects Delivered", value: 50, suffix: "+" },
+  { label: "Years of Experience", value: 3, suffix: "+" },
+  { label: "Client Satisfaction", value: 100, suffix: "%" },
 ] as const;
 
 export const developmentProcess = [

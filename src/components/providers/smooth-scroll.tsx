@@ -2,6 +2,7 @@
 
 import Lenis from "lenis";
 import { useCallback, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { ScrollContextProvider } from "./scroll-context";
 
 type SmoothScrollProps = {
@@ -10,6 +11,7 @@ type SmoothScrollProps = {
 
 export function SmoothScroll({ children }: SmoothScrollProps) {
   const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
 
   const scrollToTop = useCallback(() => {
     if (lenisRef.current) {
@@ -19,6 +21,7 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
     }
   }, []);
 
+  // Initialize Lenis
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.1,
@@ -48,6 +51,20 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
       lenisRef.current = null;
     };
   }, []);
+
+  // Sync scroll position and resize on pathname changes to prevent locked scroll states
+  useEffect(() => {
+    if (lenisRef.current) {
+      // Force instant scroll to top on route change
+      lenisRef.current.scrollTo(0, { immediate: true });
+      // Notify Lenis that DOM dimensions changed
+      setTimeout(() => {
+        if (lenisRef.current) {
+          lenisRef.current.resize();
+        }
+      }, 50);
+    }
+  }, [pathname]);
 
   return (
     <ScrollContextProvider value={{ scrollToTop }}>{children}</ScrollContextProvider>

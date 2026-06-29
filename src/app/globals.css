@@ -1,27 +1,31 @@
 @import "tailwindcss";
 
-/* EDENZATECH — balanced light theme with cyan accent */
+/* EDENZATECH — Premium enterprise teal & orange theme */
 :root {
   --header-height: 4.5rem;
-  --brand-cyan: #00e5ff;
-  --brand-blue: #0052ff;
-  --brand-navy: #072b52;
-  --brand-cream: #fefbf3;
-  --brand-black: #0a0a0f;
-  --brand-dark: #1e293b;
-  --brand-surface: #ffffff;
-  --brand-elevated: #f8fafc;
-  --brand-soft: #f1f5f9;
+  --brand-cyan: #F2B94B;
+  --brand-blue: #134D4A;
+  --brand-blue-hover: #0E3D3A;
+  --brand-orange: #E07A2E;
+  --brand-orange-hover: #C8651D;
+  --brand-navy: #1A1A1A;
+  --brand-cream: #F6EDE1;
+  --brand-black: #1A1A1A;
+  --brand-dark: #1A1A1A;
+  --brand-surface: #FFFDF8;
+  --brand-elevated: #FFFDF8;
+  --brand-soft: #F0E7DC;
   --brand-white: #ffffff;
-  --brand-muted: #64748b;
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --muted: var(--brand-muted);
-  --surface: var(--brand-surface);
-  --accent: var(--brand-cyan);
-  --accent-foreground: var(--brand-black);
-  --border: rgba(15, 23, 42, 0.1);
-  --gradient-brand: linear-gradient(135deg, #00e5ff 0%, #0052ff 100%);
+  --brand-muted: #8C8276;
+  --background: #F6EDE1;
+  --foreground: #1A1A1A;
+  --muted: #5F5A54;
+  --surface: #FFFDF8;
+  --accent: #E07A2E;
+  --accent-foreground: #ffffff;
+  --border: rgba(140, 130, 118, 0.25);
+  --gradient-brand: linear-gradient(135deg, #134D4A 0%, #0F2F2D 100%);
+  --gradient-accent: linear-gradient(135deg, #E07A2E 0%, #F2B94B 100%);
 }
 
 @theme inline {
@@ -31,6 +35,9 @@
   --color-surface: var(--surface);
   --color-brand-cyan: var(--brand-cyan);
   --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-hover: var(--brand-blue-hover);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-hover: var(--brand-orange-hover);
   --color-brand-navy: var(--brand-navy);
   --color-brand-cream: var(--brand-cream);
   --color-brand-black: var(--brand-black);
@@ -42,7 +49,8 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
-  --font-sans: var(--font-poppins);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-poppins), sans-serif;
 }
 
 html {
@@ -52,8 +60,12 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-poppins), "Poppins", system-ui, sans-serif;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
   overflow-x: clip;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
 }
 
 img,

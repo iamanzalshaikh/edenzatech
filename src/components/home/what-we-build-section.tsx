@@ -1,124 +1,224 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { OrbittButton } from "@/components/ui/orbitt-button";
-import {
-  whatWeBuildCategories,
-  type WhatWeBuildCategory,
-} from "@/lib/what-we-build-data";
-import { cn } from "@/lib/utils";
+
+const buildCategories = [
+  {
+    id: "engineering",
+    number: "01",
+    label: "ENGINEERING",
+    title: "Core Engineering",
+    image: "/web-apps-showcase.png",
+    description: "High-performance web applications, cross-platform mobile apps, and fast-turnaround MVP prototypes built to scale.",
+    subServices: [
+      "Website Development",
+      "Web Applications",
+      "Mobile Apps",
+      "MVP Development"
+    ],
+    cta: "Explore Engineering",
+    href: "/services/web-development",
+    hoverClass: "from-[#134D4A] to-[#0a2f2c]/95",
+    shadowClass: "hover:shadow-[0_20px_50px_rgba(19,77,74,0.15)]",
+    tagColor: "text-brand-cyan bg-white/10",
+    hoverSpecs: [
+      "Optimized for core web vitals",
+      "Native iOS & Android compilation",
+      "Launch-ready systems in 4-8 weeks"
+    ]
+  },
+  {
+    id: "platforms",
+    number: "02",
+    label: "PLATFORMS",
+    title: "Digital Platforms",
+    image: "/saas-software-showcase.png",
+    description: "Scalable multi-tenant SaaS architectures, custom business tools, conversion-focused e-commerce, and enterprise software.",
+    subServices: [
+      "SaaS Development",
+      "Custom Software",
+      "E-Commerce",
+      "Enterprise Software"
+    ],
+    cta: "Configure Platforms",
+    href: "/services/custom-software",
+    hoverClass: "from-[#E07A2E] to-[#b85a1a]/95",
+    shadowClass: "hover:shadow-[0_20px_50px_rgba(224,122,46,0.15)]",
+    tagColor: "text-brand-orange bg-white/15",
+    hoverSpecs: [
+      "Multi-tenant data isolation",
+      "Stripe payment & billing cycles",
+      "Scalable database architectures"
+    ]
+  },
+  {
+    id: "frontend",
+    number: "03",
+    label: "FRONTEND & UX",
+    title: "UI/UX & Frontend",
+    image: "/uiux-frontend-showcase.png",
+    description: "Pixel-perfect Figma-to-code frontends, reusable modern design systems, and responsive layouts tested on real devices.",
+    subServices: [
+      "UI/UX Design",
+      "Design Systems",
+      "Frontend Engineering",
+      "Responsive Web"
+    ],
+    cta: "View Frontend Specs",
+    href: "/services/frontend",
+    hoverClass: "from-[#f1b333] to-[#b5801c]/95",
+    shadowClass: "hover:shadow-[0_20px_50px_rgba(241,179,51,0.15)]",
+    tagColor: "text-amber-200 bg-white/15",
+    hoverSpecs: [
+      "Component-driven design systems",
+      "Highly accessible semantic markup",
+      "Interactive fluid animations"
+    ]
+  },
+  {
+    id: "cloud",
+    number: "04",
+    label: "CLOUD & BACKEND",
+    title: "Cloud & Backend",
+    image: "/api-backend-showcase.png",
+    description: "Secure REST/GraphQL API systems, automated CI/CD DevOps pipelines, and database architecture built for resilience.",
+    subServices: [
+      "API Development",
+      "Cloud Infrastructure",
+      "DevOps & CI/CD",
+      "Database Design"
+    ],
+    cta: "Review Backends",
+    href: "/services/backend",
+    hoverClass: "from-[#0c4ca6] to-[#08306b]/95",
+    shadowClass: "hover:shadow-[0_20px_50px_rgba(12,76,166,0.15)]",
+    tagColor: "text-blue-200 bg-white/15",
+    hoverSpecs: [
+      "Automated zero-downtime triggers",
+      "Highly secure OAuth2 frameworks",
+      "Autoscaling container clusters"
+    ]
+  }
+];
 
 export function WhatWeBuildSection() {
-  const [active, setActive] = useState<WhatWeBuildCategory["id"]>(
-    whatWeBuildCategories[0].id,
-  );
-  const current =
-    whatWeBuildCategories.find((c) => c.id === active) ?? whatWeBuildCategories[0];
-
   return (
-    <section className="bg-white py-14 md:py-20" id="what-we-build">
+    <section className="bg-brand-cream py-16 md:py-24" id="what-we-build">
       <Container>
+        {/* Header Block */}
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">
-            What We Build
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
+            What We Do
           </p>
-          <h2 className="heading-display mt-3 text-2xl text-neutral-900 md:text-4xl">
-            Every Type of Software Product.
-            <br className="hidden sm:block" />
-            <span className="text-gradient"> Engineered to Scale.</span>
+          <h2 className="heading-display mt-3 text-3xl font-bold text-brand-blue md:text-4xl">
+            Development Services Built for Scale
           </h2>
-          <p className="mt-4 text-base text-neutral-600 md:text-lg">
-            From MVPs to enterprise platforms—pick a category to explore what we build
-            for teams like yours.
+          <p className="mt-4 text-base text-brand-muted md:text-lg">
+            End-to-end software engineering. We focus exclusively on building robust, high-performance digital systems.
           </p>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-[0_20px_50px_-12px_rgba(15,23,42,0.08)]">
-          <div className="flex gap-2 overflow-x-auto border-b border-neutral-200 bg-brand-soft p-3 md:flex-wrap md:justify-center md:overflow-visible md:p-4">
-            {whatWeBuildCategories.map((cat) => (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setActive(cat.id)}
-                className={cn(
-                  "shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all md:text-sm",
-                  active === cat.id
-                    ? "bg-brand-gradient text-brand-black shadow-sm"
-                    : "bg-white text-neutral-600 ring-1 ring-neutral-200 hover:text-neutral-900",
-                )}
-              >
-                <span className="mr-1.5 font-mono text-[10px] opacity-70 md:text-xs">
-                  {cat.number}
-                </span>
-                {cat.label}
-              </button>
-            ))}
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="grid items-center gap-8 p-6 md:grid-cols-2 md:gap-12 md:p-10 lg:p-12"
+        {/* 4-Column Grid System with 3D Flip Cards */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {buildCategories.map((cat, i) => (
+            <motion.article
+              key={cat.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              className={`group relative overflow-visible aspect-[3/4.1] [perspective:1000px]`}
             >
-              <div className="order-2 md:order-1">
-                <span className="font-mono text-sm font-bold text-brand-cyan">
-                  {current.number}
-                </span>
-                <h3 className="heading-section mt-2 text-2xl text-neutral-900 md:text-3xl">
-                  {current.title}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-neutral-600 md:text-base">
-                  {current.description}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {current.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-neutral-200 bg-brand-soft px-3 py-1 text-xs font-medium text-neutral-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-8">
-                  <OrbittButton href={current.href} icon="arrow" variant="solid">
-                    {current.cta}
-                  </OrbittButton>
-                </div>
-              </div>
+              {/* Flippable Card Container */}
+              <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                
+                {/* FRONT FACE (Default light card) */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-2xl bg-white shadow-md flex flex-col justify-between overflow-hidden z-10">
+                  {/* Top Image Box (55% height) */}
+                  <div className="relative flex h-[55%] w-full items-center justify-center bg-[#ecf3f2] p-4 overflow-hidden border-b border-[#e5eeed]">
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(19,77,74,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(19,77,74,0.02)_1px,transparent_1px)] bg-[size:1.2rem_1.2rem]" />
+                    <img
+                      src={cat.image}
+                      alt={cat.title}
+                      className="relative z-10 h-full w-full object-cover rounded-lg"
+                    />
+                  </div>
 
-              <div className="order-1 flex justify-center md:order-2">
-                <div className="relative flex h-56 w-full max-w-sm items-center justify-center rounded-2xl bg-brand-soft p-8 ring-1 ring-neutral-200 md:h-72">
-                  <div
-                    className="absolute inset-3 rounded-xl bg-brand-cyan/5"
-                    aria-hidden
-                  />
-                  <Image
-                    src={current.image}
-                    alt=""
-                    width={200}
-                    height={180}
-                    className="relative z-10 h-auto max-h-40 w-auto object-contain md:max-h-48"
-                    unoptimized
-                  />
+                  {/* Bottom Metadata Box (45% height) */}
+                  <div className="h-[45%] p-4 flex flex-col justify-between text-left bg-white">
+                    <div>
+                      <span className="text-[9px] font-bold tracking-widest text-brand-orange uppercase">
+                        {cat.label}
+                      </span>
+                      <h3 className="mt-0.5 text-sm font-bold text-brand-blue leading-snug truncate">
+                        {cat.title}
+                      </h3>
+                    </div>
+
+                    {/* List of sub-services inside card */}
+                    <ul className="mt-2 space-y-1 text-left flex-1">
+                      {cat.subServices.map((sub) => (
+                        <li key={sub} className="text-[11px] font-medium text-brand-muted flex items-center gap-1.5">
+                          <span className="h-1 w-1 bg-brand-orange rounded-full shrink-0" />
+                          <span className="truncate">{sub}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
+
+                {/* BACK FACE (Hover active overlay) */}
+                <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl bg-gradient-to-b ${cat.hoverClass} p-5 flex flex-col justify-between text-left overflow-hidden z-20 ${cat.shadowClass}`}>
+                  <div className="space-y-3.5">
+                    <div>
+                      <span className="text-[9px] font-bold tracking-widest text-white/80 uppercase">
+                        {cat.label}
+                      </span>
+                      <p className="mt-2 text-xs font-semibold text-white leading-relaxed line-clamp-3">
+                        {cat.description}
+                      </p>
+                    </div>
+
+                    {/* Enhanced Content: Detailed specification bullets */}
+                    <div className="space-y-1.5 border-t border-white/10 pt-3">
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-white/60 block">Key Standards</span>
+                      <ul className="space-y-1 text-left">
+                        {cat.hoverSpecs.map((spec) => (
+                          <li key={spec} className="text-[10px] font-medium text-white/90 flex items-start gap-1.5 leading-snug">
+                            <Check className="h-3 w-3 text-white shrink-0 mt-0.5" />
+                            <span>{spec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Hover CTA Link */}
+                  <Link
+                    href={cat.href}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white group/link"
+                  >
+                    <span className="relative pb-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-white/80">
+                      {cat.cta}
+                    </span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </motion.article>
+          ))}
         </div>
 
-        <p className="mt-8 text-center text-sm text-neutral-600">
+        {/* Footnote */}
+        <p className="mt-12 text-center text-sm text-brand-muted">
           Not sure where to start?{" "}
-          <a href="/contact" className="font-semibold text-brand-blue hover:underline">
+          <Link href="/contact" className="font-semibold text-brand-blue hover:underline">
             Tell us your idea
-          </a>{" "}
+          </Link>{" "}
           — we&apos;ll recommend the right approach in 24 hours.
         </p>
       </Container>

@@ -10,10 +10,10 @@ const services =
 
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-900 text-white">
+    <footer className="bg-neutral-900 text-white">
       <Container className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4 lg:py-16">
         <div className="lg:col-span-1">
-          <EdenzaLogo variant="wordmark" theme="dark" />
+          <EdenzaLogo variant="wordmark" theme="dark" className="!h-12 !py-1.5 md:!h-14 md:!py-2" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-400">
             {siteConfig.description}
           </p>

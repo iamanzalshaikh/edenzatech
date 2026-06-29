@@ -20,8 +20,8 @@ export function StatCounter({
   duration = 2000,
 }: StatCounterProps) {
   const { ref, inView } = useInViewOnce<HTMLDivElement>({
-    rootMargin: "0px 0px -40px 0px",
-    threshold: 0.2,
+    rootMargin: "0px",
+    threshold: 0.01,
   });
   const [count, setCount] = useState(0);
 
@@ -54,7 +54,7 @@ export function StatCounter({
           variant === "hero" && "text-4xl text-white md:text-5xl",
           variant === "panel" && "text-2xl text-brand-cyan md:text-3xl lg:text-4xl",
           variant === "panel-light" &&
-            "text-2xl text-neutral-900 md:text-3xl lg:text-4xl",
+            "text-2xl text-brand-blue md:text-3xl lg:text-4xl",
         )}
       >
         {count}
@@ -67,7 +67,7 @@ export function StatCounter({
           variant === "panel" &&
             "text-[10px] uppercase tracking-wide text-white/70 sm:text-xs md:text-sm",
           variant === "panel-light" &&
-            "text-[10px] uppercase tracking-wide text-neutral-500 sm:text-xs md:text-sm",
+            "text-[10px] uppercase tracking-wide text-brand-muted sm:text-xs md:text-sm",
         )}
       >
         {label}

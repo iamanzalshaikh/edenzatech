@@ -15,6 +15,8 @@ function TestimonialCard({
   quote,
   rating,
   avatar,
+  flag,
+  location,
   className,
 }: {
   name: string;
@@ -22,6 +24,8 @@ function TestimonialCard({
   quote: string;
   rating: number;
   avatar: string;
+  flag?: string;
+  location?: string;
   className?: string;
 }) {
   return (
@@ -40,9 +44,16 @@ function TestimonialCard({
           className="h-12 w-12 rounded-full bg-brand-soft object-cover ring-2 ring-brand-cyan/20"
           loading="lazy"
         />
-        <div className="min-w-0">
-          <p className="truncate font-semibold text-neutral-900">{name}</p>
-          <p className="truncate text-sm text-neutral-500">{handle}</p>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center justify-between gap-1.5">
+            <p className="truncate font-semibold text-neutral-900">{name}</p>
+            {flag && (
+              <span className="text-base shrink-0 select-none" title={location}>
+                {flag}
+              </span>
+            )}
+          </div>
+          <p className="truncate text-xs text-neutral-500">{handle}</p>
         </div>
       </div>
       <div className="mt-4 flex gap-0.5 text-brand-cyan">

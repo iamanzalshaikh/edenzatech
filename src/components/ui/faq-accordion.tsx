@@ -14,21 +14,21 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-border rounded-2xl border border-border bg-brand-surface">
+    <div className="divide-y divide-brand-muted/10 rounded-2xl border border-brand-muted/10 bg-brand-surface shadow-md">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
           <div key={item.question}>
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-white transition-colors hover:bg-brand-cyan/5 md:px-6 md:py-5"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-brand-blue transition-colors hover:bg-brand-orange/5 md:px-6 md:py-5"
               aria-expanded={isOpen}
               onClick={() => setOpen(isOpen ? null : i)}
             >
-              <span className="text-sm font-semibold md:text-base">{item.question}</span>
+              <span className="text-sm font-bold md:text-base">{item.question}</span>
               <ChevronDown
                 className={cn(
-                  "h-5 w-5 shrink-0 text-brand-cyan transition-transform",
+                  "h-5 w-5 shrink-0 text-brand-orange transition-transform",
                   isOpen && "rotate-180",
                 )}
               />

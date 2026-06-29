@@ -4,15 +4,15 @@ import { faqs } from "@/lib/home-data";
 
 export function FaqSection() {
   return (
-    <section className="border-t border-neutral-200 bg-brand-soft py-14 md:py-20" id="faqs">
+    <section className="border-t border-brand-muted/10 bg-brand-cream py-14 md:py-20" id="faqs">
       <Container className="max-w-3xl">
-        <p className="text-center text-sm font-semibold uppercase tracking-wide text-brand-cyan">
+        <p className="text-center text-sm font-semibold uppercase tracking-wide text-brand-orange">
           FAQs
         </p>
-        <h2 className="heading-section mt-2 text-center text-2xl text-neutral-900 md:text-3xl">
+        <h2 className="heading-section mt-2 text-center text-2xl font-bold text-brand-blue md:text-3xl">
           Frequently Asked Questions
         </h2>
-        <p className="mt-3 text-center text-neutral-600">
+        <p className="mt-3 text-center text-brand-muted">
           Everything you need to know about working with EDENZATECH
         </p>
         <div className="mt-10">

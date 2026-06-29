@@ -13,12 +13,12 @@ export function StatsSection() {
       />
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="heading-section text-2xl text-white md:text-3xl">
+          <h2 className="heading-section text-2xl font-bold text-white md:text-3xl">
             Why Partner With {` `}
-            <span className="text-brand-black">EDENZATECH?</span>
+            <span className="text-brand-cyan">EDENZATECH?</span>
           </h2>
           <div className="mt-4 space-y-1 text-base text-white/90 md:text-[17px]">
-            <p>6+ years of engineering expertise. 150+ products shipped.</p>
+            <p>3+ years of engineering expertise. 50+ products shipped.</p>
             <p>Code quality that scales with your business.</p>
           </div>
         </div>

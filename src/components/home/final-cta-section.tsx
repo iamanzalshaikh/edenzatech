@@ -19,7 +19,7 @@ export function FinalCtaSection() {
           about your product goals and technical roadmap.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <OrbittButton href="/contact" icon="phone" className="!text-brand-black">
+          <OrbittButton href="/contact" icon="phone" variant="gradient">
             Schedule Free Consultation
           </OrbittButton>
           <OrbittButton href={siteConfig.contact.whatsapp} icon="whatsapp" external variant="outline">

@@ -30,7 +30,7 @@ export function OrbittButton({
   const classes = cn(
     "inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200",
     variant === "gradient" &&
-      "bg-brand-gradient text-brand-black shadow-[0_0_24px_rgba(0,229,255,0.25)] hover:shadow-[0_0_32px_rgba(0,229,255,0.4)] hover:brightness-110",
+      "bg-[linear-gradient(135deg,var(--brand-orange)_0%,var(--brand-cyan)_100%)] text-white shadow-[0_0_24px_rgba(224,122,46,0.2)] hover:shadow-[0_0_32px_rgba(224,122,46,0.35)] hover:brightness-110",
     variant === "outline" &&
       "border border-brand-cyan/30 bg-transparent text-white hover:border-brand-cyan/60 hover:bg-brand-cyan/5",
     variant === "light-outline" &&

@@ -36,8 +36,8 @@ export const navLinks = [
       // { label: "Brand Identity & Graphic Design", href: "/services/branding" },
     ],
   },
+  { label: "Projects", href: "/projects" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact Us", href: "/contact" },
   { label: "FAQs", href: "/faqs" },
 ] as const;

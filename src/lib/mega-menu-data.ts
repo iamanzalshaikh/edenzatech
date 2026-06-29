@@ -158,7 +158,7 @@ export const primaryNavLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services", mega: true as const },
+  { label: "Projects", href: "/projects" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
 ] as const;

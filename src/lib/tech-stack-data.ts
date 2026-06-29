@@ -3,7 +3,7 @@ export type TechItem = {
   description: string;
   tags: string[];
   devicon?: string;
-  deviconVariant?: "original" | "plain" | "line";
+  deviconVariant?: "original" | "plain" | "line" | "original-wordmark" | "plain-wordmark";
   simpleIcon?: { slug: string; color: string };
 };
 
@@ -92,6 +92,12 @@ export const techStackCategories: TechCategory[] = [
         description: "Rapid mobile delivery with over-the-air updates.",
         tags: ["Mobile", "Fast Launch"],
       },
+      {
+        name: "Flutter",
+        devicon: "flutter",
+        description: "High-performance cross-platform apps with native Dart compilation.",
+        tags: ["Dart", "iOS", "Android", "Bloc"],
+      },
     ],
   },
   {
@@ -151,7 +157,8 @@ export const techStackCategories: TechCategory[] = [
     items: [
       {
         name: "AWS",
-        simpleIcon: { slug: "amazonaws", color: "FF9900" },
+        devicon: "amazonwebservices",
+        deviconVariant: "original-wordmark",
         description: "Global infrastructure for your application.",
         tags: ["Cloud", "AWS"],
       },
