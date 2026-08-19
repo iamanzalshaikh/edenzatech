@@ -14,6 +14,20 @@ export interface ProjectItem {
 
 const rawProjectsList: ProjectItem[] = [
   {
+    title: "EGC India - Premium E-Commerce",
+    category: "web",
+    categoryLabel: "E-Commerce",
+    description: "A highly optimized e-commerce platform built for EGC India to handle large product catalogs and secure checkout.",
+    image: "/uiux-frontend-showcase.png",
+    metric: "High Conversion E-Commerce",
+    bgClass: "bg-[#FFF9F5]",
+    iconBg: "bg-[#FEEAD9]",
+    textClass: "text-brand-orange",
+    tags: ["React", "E-Commerce", "Node.js"],
+    href: "https://clawbot-ai-lead.vercel.app/login"
+  },
+
+  {
     title: "Clawbot – AI Lead Management",
     category: "saas",
     categoryLabel: "SaaS Product",
@@ -24,7 +38,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["React.js", "Node.js", "Express", "AI Integration"],
-    href: "https://clawbot-ai-lead.vercel.app/login"
+    href: "#"
   },
   {
     title: "Taxedo: Ride-Hailing Platform",
@@ -50,7 +64,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["Node.js", "Express", "Prisma", "BullMQ Tasks"],
-    href: "https://schoolfms.com/"
+    href: "#"
   },
   {
     title: "ZorivaPOS – Next-Gen Point of Sale",
@@ -63,7 +77,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["React.js", "TypeScript", "Recharts", "Live Inventory"],
-    href: "https://pos-frontend-rudu.onrender.com/"
+    href: "#"
   },
   {
     title: "EduLaunch – Interactive EdTech",
@@ -76,7 +90,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["Next.js 14", "Canvas API", "Stripe Checkout"],
-    href: "https://www.edulaunch.shop/"
+    href: "#"
   },
   {
     title: "XpertLMS – Centralized Academy",
@@ -102,7 +116,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["React.js", "Firebase", "Stripe", "Blog Engine"],
-    href: "http://stagchemist.com/"
+    href: "#"
   },
   {
     title: "WearUp – Premium Clothing Store",
@@ -115,7 +129,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["React.js", "Node.js", "Redux Toolkit", "JWT Secure"],
-    href: "https://clothing-frontend-zqt8.onrender.com/"
+    href: "#"
   },
   {
     title: "AI Interview Simulator",
@@ -193,7 +207,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["React.js", "Tailwind CSS", "Framer Motion"],
-    href: "https://codsyn.com/"
+    href: "#"
   },
   {
     title: "Farooq Azam Smart HMS",
@@ -466,7 +480,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["React.js", "Node.js", "Express", "AI Compliance Integration", "Escrow Secure Wallet"],
-    href: "https://econs.egcindia.in/"
+    href: "#"
   },
   {
     title: "E8 Productions – Video & Media Solutions",
@@ -479,7 +493,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FAF2CD]",
     textClass: "text-[#b07f18]",
     tags: ["HTML5", "CSS3", "JavaScript", "Video Production", "SEO Optimization"],
-    href: "https://www.e8productions.com/"
+    href: "#"
   },
   {
     title: "Nexa Solutions – Custom Web Development",
@@ -622,7 +636,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D1E2FB]",
     textClass: "text-[#0c4ca6]",
     tags: ["MERN Stack", "E-Commerce", "Furniture"],
-    href: "https://jkf-final.onrender.com/"
+    href: "#"
   },
   {
     title: "Raj TVS Showroom",
@@ -635,7 +649,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["Next.js", "SEO", "Lead Generation"],
-    href: "https://rajtvs.com/"
+    href: "#"
   },
   {
     title: "Trishaan Motors",
@@ -661,7 +675,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FAF2CD]",
     textClass: "text-[#b07f18]",
     tags: ["Next.js", "Tailwind CSS", "Stripe"],
-    href: "https://dtdgym.com"
+    href: "#"
   },
   {
     title: "Emira English Academy",

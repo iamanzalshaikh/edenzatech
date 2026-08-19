@@ -134,14 +134,14 @@ export default function ProjectsPage() {
                           rel="noopener noreferrer"
                           className={`inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85`}
                         >
-                          Launch Project <ChevronArrow className="h-3 w-3" />
+                          Live Link <ChevronArrow className="h-3 w-3" />
                         </a>
                       ) : (
                         <Link
                           href="/contact"
                           className={`inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85`}
                         >
-                          Inquire Details <ChevronArrow className="h-3 w-3" />
+                          View Details <ChevronArrow className="h-3 w-3" />
                         </Link>
                       )}
                     </div>
