@@ -180,8 +180,13 @@ export function AboutSection() {
                   </div>
                   <div className="mt-6 flex items-center justify-center gap-2 rounded-full border border-brand-muted/10 bg-white px-4 py-2.5 text-sm font-medium text-brand-muted">
                     <MapPin className="h-4 w-4 shrink-0 text-brand-orange" />
-                    <span className="text-center">
-                      {siteConfig.location} · Serving clients globally
+                    <span className="text-center flex items-center justify-center gap-1.5 flex-wrap">
+                      {siteConfig.locations?.map((loc, i) => (
+                        <span key={loc.name} className="flex items-center gap-1.5">
+                          <img src={loc.flag} alt={loc.name} className="w-4 h-auto rounded-[2px] shadow-sm" />
+                          {loc.name}{i === 0 ? " &" : ""}
+                        </span>
+                      ))} <span className="mx-1">·</span> Serving clients globally
                     </span>
                   </div>
                 </div>

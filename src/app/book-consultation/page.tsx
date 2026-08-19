@@ -66,7 +66,7 @@ export default function BookConsultationPage() {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        alert("Failed to submit consultation details. Please email hello@edenzatech.com");
+        alert("Failed to submit consultation details. Please email edenzatech@gmail.com");
       }
     } catch (err) {
       console.error(err);

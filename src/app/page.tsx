@@ -38,9 +38,22 @@ const GrowthProcessSection = dynamic(
 const TestimonialsSection = dynamic(
   () => import("@/components/home/testimonials-section").then((m) => m.TestimonialsSection),
 );
+const InstagramSection = dynamic(
+  () => import("@/components/home/instagram-section").then((m) => m.InstagramSection),
+);
 const FinalCtaSection = dynamic(
   () => import("@/components/home/final-cta-section").then((m) => m.FinalCtaSection),
 );
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Edenza Tech | Top Custom Software & SaaS Development Company in India & Dubai",
+  description: "Hire the best software development company in India and Dubai. We specialize in custom SaaS platforms, enterprise web applications, and mobile app development.",
+  alternates: {
+    canonical: "/",
+  },
+};
+
 const FaqSection = dynamic(() => import("@/components/home/faq-section").then((m) => m.FaqSection));
 
 export default function HomePage() {
@@ -57,6 +70,7 @@ export default function HomePage() {
       <WhyChooseSection />
       <TechnologyArsenalSection />
       {/* <GrowthProcessSection /> */}
+      <InstagramSection />
       <TestimonialsSection />
       <FinalCtaSection />
       {/* <FaqSection /> */}

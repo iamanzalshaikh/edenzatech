@@ -5,8 +5,11 @@ import { Container } from "@/components/ui/container";
 import { OrbittButton } from "@/components/ui/orbitt-button";
 
 export const metadata: Metadata = {
-  title: "About Us — Meet the Founders",
+  title: "About Us — Meet the Founders | Edenza Tech",
   description: "Learn more about EDENZATECH, founded by Anzal Shaikh and Aftab Asif, dedicated to shipping high-end web, mobile, and custom applications.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

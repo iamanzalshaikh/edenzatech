@@ -43,7 +43,7 @@ export default function ContactPage() {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        alert("Failed to submit inquiry. Please try again or email hello@edenzatech.com");
+        alert("Failed to submit inquiry. Please try again or email edenzatech@gmail.com");
       }
     } catch (err) {
       console.error(err);
@@ -102,7 +102,14 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-extrabold text-brand-blue uppercase tracking-wider text-[10px]">Global Headquarters</p>
-                      <p className="font-bold text-brand-muted mt-0.5">{siteConfig.location}</p>
+                      <div className="font-bold text-brand-muted mt-1 space-y-1.5">
+                        {siteConfig.locations?.map((loc) => (
+                          <div key={loc.name} className="flex items-center gap-2">
+                            <img src={loc.flag} alt={loc.name} className="w-5 h-auto rounded-[2px] shadow-sm" />
+                            <span>{loc.name}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 

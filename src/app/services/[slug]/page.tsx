@@ -133,7 +133,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const data = serviceDetailsData[slug];
   if (!data) return {};
-  return { title: `${data.title} — EDENZATECH` };
+  return { 
+    title: `${data.title} Services | Edenza Tech`,
+    description: data.summary,
+    alternates: {
+      canonical: `/services/${slug}`
+    }
+  };
 }
 
 export default async function ServiceDetailPage({ params }: Props) {

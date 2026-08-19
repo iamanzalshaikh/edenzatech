@@ -4,10 +4,13 @@ export const siteConfig = {
   description:
     "Full-stack software development company building web apps, mobile apps, SaaS platforms, and custom software with modern technologies.",
   url: "https://edenzatech.com",
-  location: "Mumbai, India",
+  locations: [
+    { name: "Mumbai, India", flag: "https://flagcdn.com/w20/in.png" },
+    { name: "Dubai, UAE", flag: "https://flagcdn.com/w20/ae.png" }
+  ],
   contact: {
     whatsapp: "https://wa.me/",
-    email: "hello@edenzatech.com",
+    email: "edenzatech@gmail.com",
   },
   social: {
     instagram: "https://instagram.com",

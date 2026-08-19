@@ -5,8 +5,11 @@ import { Globe, Smartphone, Server, Palette, CheckCircle2, ChevronRight, Layers,
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Our Services — EDENZATECH",
+  title: "Our Services | Custom Software, SaaS, Web & Mobile App Development",
   description: "Explore our range of software development services including Web Development, Mobile Apps, SaaS platforms, API architectures, and custom database designs.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const servicePillars = [

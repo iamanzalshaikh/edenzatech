@@ -13,7 +13,7 @@ export function Footer() {
     <footer className="bg-neutral-900 text-white">
       <Container className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4 lg:py-16">
         <div className="lg:col-span-1">
-          <EdenzaLogo variant="wordmark" theme="dark" className="!h-12 !py-1.5 md:!h-14 md:!py-2" />
+          <EdenzaLogo variant="wordmark" theme="dark" className="!h-16 !py-2 md:!h-20 md:!py-3" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-400">
             {siteConfig.description}
           </p>
@@ -84,16 +84,20 @@ export function Footer() {
           <OrbittButton href="/contact" variant="gradient">
             Start Your Project
           </OrbittButton>
-          <p className="mt-4 text-sm text-neutral-400">
-            {siteConfig.location}
-            <br />
+          <div className="mt-4 text-sm text-neutral-400 space-y-1.5">
+            {siteConfig.locations?.map((loc) => (
+              <div key={loc.name} className="flex items-center gap-2">
+                <img src={loc.flag} alt={loc.name} className="w-5 h-auto rounded-[2px] shadow-sm" />
+                <span>{loc.name}</span>
+              </div>
+            ))}
             <a
               href={`mailto:${siteConfig.contact.email}`}
-              className="hover:text-brand-cyan"
+              className="hover:text-brand-cyan block pt-1"
             >
               {siteConfig.contact.email}
             </a>
-          </p>
+          </div>
         </div>
       </Container>
 
