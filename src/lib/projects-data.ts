@@ -24,7 +24,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["React", "E-Commerce", "Node.js"],
-    href: "https://clawbot-ai-lead.vercel.app/login"
+    href: "https://shop.egcindia.in/"
   },
 
   {
@@ -38,7 +38,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["React.js", "Node.js", "Express", "AI Integration"],
-    href: "#"
+    href: "https://clawbot-ai-lead.vercel.app/login"
   },
   {
     title: "Taxedo: Ride-Hailing Platform",
@@ -64,7 +64,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["Node.js", "Express", "Prisma", "BullMQ Tasks"],
-    href: "#"
+    href: "https://schoolfms.com/"
   },
   {
     title: "ZorivaPOS – Next-Gen Point of Sale",
@@ -77,7 +77,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["React.js", "TypeScript", "Recharts", "Live Inventory"],
-    href: "#"
+    href: "https://pos-frontend-rudu.onrender.com/"
   },
   {
     title: "EduLaunch – Interactive EdTech",
@@ -90,7 +90,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["Next.js 14", "Canvas API", "Stripe Checkout"],
-    href: "#"
+    href: "https://www.edulaunch.shop/"
   },
   {
     title: "XpertLMS – Centralized Academy",
@@ -116,7 +116,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["React.js", "Firebase", "Stripe", "Blog Engine"],
-    href: "#"
+    href: "http://stagchemist.com/"
   },
   {
     title: "WearUp – Premium Clothing Store",
@@ -129,7 +129,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["React.js", "Node.js", "Redux Toolkit", "JWT Secure"],
-    href: "#"
+    href: "https://clothing-frontend-zqt8.onrender.com/"
   },
   {
     title: "AI Interview Simulator",
@@ -207,7 +207,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["React.js", "Tailwind CSS", "Framer Motion"],
-    href: "#"
+    href: "https://codsyn.com/"
   },
   {
     title: "Farooq Azam Smart HMS",
@@ -480,7 +480,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D2EBE7]",
     textClass: "text-[#134D4A]",
     tags: ["React.js", "Node.js", "Express", "AI Compliance Integration", "Escrow Secure Wallet"],
-    href: "#"
+    href: "https://econs.egcindia.in/"
   },
   {
     title: "E8 Productions – Video & Media Solutions",
@@ -493,7 +493,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FAF2CD]",
     textClass: "text-[#b07f18]",
     tags: ["HTML5", "CSS3", "JavaScript", "Video Production", "SEO Optimization"],
-    href: "#"
+    href: "https://www.e8productions.com/"
   },
   {
     title: "Nexa Solutions – Custom Web Development",
@@ -636,7 +636,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#D1E2FB]",
     textClass: "text-[#0c4ca6]",
     tags: ["MERN Stack", "E-Commerce", "Furniture"],
-    href: "#"
+    href: "https://jkf-final.onrender.com/"
   },
   {
     title: "Raj TVS Showroom",
@@ -649,7 +649,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FEEAD9]",
     textClass: "text-brand-orange",
     tags: ["Next.js", "SEO", "Lead Generation"],
-    href: "#"
+    href: "https://rajtvs.com/"
   },
   {
     title: "Trishaan Motors",
@@ -675,7 +675,7 @@ const rawProjectsList: ProjectItem[] = [
     iconBg: "bg-[#FAF2CD]",
     textClass: "text-[#b07f18]",
     tags: ["Next.js", "Tailwind CSS", "Stripe"],
-    href: "#"
+    href: "https://dtdgym.com"
   },
   {
     title: "Emira English Academy",
