@@ -4,6 +4,7 @@ import { AppProviders } from "@/components/providers/app-providers";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { WhatsAppWidget } from "@/components/ui/whatsapp-widget";
 import { siteConfig } from "@/lib/site-config";
 import { LoadingScreen } from "@/components/ui/loading-screen";
@@ -136,6 +137,7 @@ export default function RootLayout({
         {/* WhatsApp widget lives outside AppProviders so fixed positioning is never clipped */}
         <WhatsAppWidget />
       </body>
+      <GoogleAnalytics gaId="G-NSDS31TLNN" />
     </html>
   );
 }
