@@ -3,14 +3,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { Sparkles, ArrowRight, ShieldCheck, Code2, Layers } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, Code2, Layers, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { OrbittButton } from "@/components/ui/orbitt-button";
-import { projectsList } from "@/lib/projects-data";
+import { projectsList, ProjectItem } from "@/lib/projects-data";
 import Link from "next/link";
 
 export default function ProjectsPage() {
   const [activeTab, setActiveTab] = useState("all");
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filteredProjects = activeTab === "all" 
     ? projectsList 
@@ -79,13 +81,19 @@ export default function ProjectsPage() {
                 >
                   <div>
                     {/* Image container */}
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1rem] sm:rounded-[1.8rem] bg-white shadow-sm mb-3 sm:mb-5">
+                    <div 
+                      className="relative aspect-[16/10] w-full overflow-hidden rounded-[1rem] sm:rounded-[1.8rem] bg-white shadow-sm mb-3 sm:mb-5 cursor-pointer"
+                      onClick={() => {
+                        setSelectedProject(proj);
+                        setCurrentImageIndex(0);
+                      }}
+                    >
                       <Image
                         src={proj.image}
                         alt={`${proj.title} Showcase Mockup`}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     </div>
 
@@ -126,8 +134,19 @@ export default function ProjectsPage() {
                       ))}
                     </div>
 
-                    <div className="pt-2 sm:pt-4 border-t border-brand-muted/5 flex justify-between items-center">
-                      {proj.href && proj.href !== "#" ? (
+                    <div className="pt-2 sm:pt-4 border-t border-brand-muted/5 flex items-center justify-between gap-4">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedProject(proj);
+                          setCurrentImageIndex(0);
+                        }}
+                        className={`inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85 bg-transparent border-0 cursor-pointer p-0`}
+                      >
+                        View Details <ChevronArrow className="h-3 w-3" />
+                      </button>
+                      
+                      {proj.href && proj.href !== "#" && (
                         <a
                           href={proj.href}
                           target="_blank"
@@ -136,13 +155,6 @@ export default function ProjectsPage() {
                         >
                           Live Link <ChevronArrow className="h-3 w-3" />
                         </a>
-                      ) : (
-                        <Link
-                          href="/contact"
-                          className={`inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85`}
-                        >
-                          View Details <ChevronArrow className="h-3 w-3" />
-                        </Link>
                       )}
                     </div>
                   </div>
@@ -214,6 +226,192 @@ export default function ProjectsPage() {
         </Container>
       </section>
 
+      {/* Image Carousel Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8"
+            onClick={() => setSelectedProject(null)}
+          >
+            <div
+              className="relative w-full max-w-4xl bg-white border border-brand-soft rounded-3xl overflow-hidden flex flex-col md:flex-row z-10 max-h-[90vh] md:max-h-[85vh] overflow-y-auto"
+              style={{
+                boxShadow:
+                  "rgba(0, 0, 0, 0.1) 0px 20px 50px, rgba(255, 255, 255, 0.5) 0px 1px 0px inset, rgba(224, 122, 46, 0.15) 0px 0px 40px",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-brand-soft/50 border border-brand-soft text-brand-muted hover:text-brand-blue flex items-center justify-center hover:bg-brand-soft transition-all z-30 cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="w-full md:w-1/2 h-72 md:h-auto relative bg-brand-cream/30 flex items-center justify-center min-h-[300px]">
+                <div className="relative w-full h-full group/media">
+                  <div className="relative w-full h-full overflow-hidden group/slider bg-brand-cream/50">
+                    {selectedProject.videoUrl ? (
+                      <iframe
+                        src={selectedProject.videoUrl}
+                        className="w-full h-full border-0 animate-fade-in"
+                        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                        allowFullScreen
+                        style={{ height: "100%", width: "100%" }}
+                      />
+                    ) : (
+                      <>
+                        <Image
+                          src={
+                            selectedProject.gallery?.length
+                              ? selectedProject.gallery[currentImageIndex]
+                              : selectedProject.image
+                          }
+                          alt={selectedProject.title}
+                          fill
+                          className="object-contain bg-white/90 p-3 transition-all duration-700 hover:scale-[1.02] opacity-100"
+                        />
+                        
+                        {selectedProject.gallery && selectedProject.gallery.length > 1 && (
+                          <>
+                            <button
+                              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-black hover:scale-105 border border-white/10 z-20 cursor-pointer"
+                              onClick={() =>
+                                setCurrentImageIndex((prev) =>
+                                  prev === 0 ? selectedProject.gallery!.length - 1 : prev - 1
+                                )
+                              }
+                              aria-label="Previous image"
+                            >
+                              <ChevronLeft className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-black hover:scale-105 border border-white/10 z-20 cursor-pointer"
+                              onClick={() =>
+                                setCurrentImageIndex((prev) =>
+                                  prev === selectedProject.gallery!.length - 1 ? 0 : prev + 1
+                                )
+                              }
+                              aria-label="Next image"
+                            >
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </button>
+
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                              {selectedProject.gallery.map((_, i) => (
+                                <button
+                                  key={i}
+                                  onClick={() => setCurrentImageIndex(i)}
+                                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                                    i === currentImageIndex
+                                      ? "bg-white w-4 shadow-[0_0_8px_rgba(255,255,255,0.6)]"
+                                      : "bg-white/40 hover:bg-white/60 w-1.5"
+                                  }`}
+                                  aria-label={`Go to slide ${i + 1}`}
+                                />
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </div>
+                <span
+                  className="absolute top-4 left-4 text-[9px] uppercase font-bold tracking-widest px-3 py-1 rounded-full border bg-white/90 backdrop-blur-sm z-20"
+                  style={{
+                    color: "var(--brand-orange)",
+                    borderColor: "color-mix(in srgb, var(--brand-orange) 25%, transparent)",
+                    boxShadow: "rgba(224, 122, 46, 0.2) 0px 0px 10px",
+                  }}
+                >
+                  {selectedProject.categoryLabel || "Professional"}
+                </span>
+              </div>
+              
+              <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col gap-6 select-text overflow-y-auto justify-center">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold font-manrope text-brand-blue">
+                    {selectedProject.title}
+                  </h3>
+                  <div className="w-12 h-1 bg-brand-orange mt-3 rounded-full" />
+                </div>
+                
+                <p className="text-sm text-brand-muted leading-relaxed font-light font-manrope">
+                  {selectedProject.description}
+                </p>
+                
+                <div className="grid grid-cols-3 gap-3.5 py-5 border-y border-brand-soft w-full">
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] text-brand-muted font-bold uppercase tracking-wider break-words whitespace-normal leading-tight">
+                      Core Architecture
+                    </span>
+                    <span className="text-sm font-bold text-brand-blue mt-1 break-words whitespace-normal leading-snug">
+                      {selectedProject.coreArchitecture || "Modern Web Stack"}
+                    </span>
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] text-brand-muted font-bold uppercase tracking-wider break-words whitespace-normal leading-tight">
+                      Database System
+                    </span>
+                    <span className="text-sm font-bold text-brand-blue mt-1 break-words whitespace-normal leading-snug">
+                      {selectedProject.databaseSystem || "PostgreSQL / DB"}
+                    </span>
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] text-brand-muted font-bold uppercase tracking-wider break-words whitespace-normal leading-tight">
+                      Focus
+                    </span>
+                    <span className="text-sm font-bold text-brand-blue mt-1 break-words whitespace-normal leading-snug">
+                      {selectedProject.focus || selectedProject.metric || "Business Logic"}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="bg-brand-cream/40 border border-brand-soft rounded-2xl p-4 flex justify-between items-center">
+                  <div>
+                    <span className="text-[9px] uppercase tracking-widest text-brand-muted font-bold">
+                      Application Focus
+                    </span>
+                    <p className="text-sm font-bold text-brand-orange mt-0.5">
+                      {selectedProject.categoryLabel}
+                    </p>
+                  </div>
+                  {selectedProject.href && selectedProject.href !== "#" && (
+                    <a
+                      href={selectedProject.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold text-xs transition-all duration-300"
+                    >
+                      Launch Project
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-3.5 h-3.5"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

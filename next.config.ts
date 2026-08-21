@@ -37,6 +37,16 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "anzalportfolio.netlify.app",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "aftabasifdev.vercel.app",
+        pathname: "/**",
+      },
     ],
   },
 };
