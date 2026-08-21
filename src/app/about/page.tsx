@@ -6,7 +6,7 @@ import { OrbittButton } from "@/components/ui/orbitt-button";
 
 export const metadata: Metadata = {
   title: "About Us — Meet the Founders | Edenza Tech",
-  description: "Learn more about EDENZATECH, founded by Anzal Shaikh and Aftab Asif, dedicated to shipping high-end web, mobile, and custom applications.",
+  description: "Learn more about EDENZATECH, founded by Tatheer Fatima and Aftab Asif, dedicated to shipping high-end web, mobile, and custom applications.",
   alternates: {
     canonical: "/about",
   },
@@ -62,8 +62,8 @@ export default function AboutPage() {
               {/* Large Circular Avatar container with White Ring and Rich Drop Shadow */}
               <div className="h-36 w-36 shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-[#D2EBE7] to-[#B0DFD8] p-1.5 shadow-[0_12px_28px_rgba(19,77,74,0.14)] ring-4 ring-white transition-all duration-500 group-hover:scale-[1.04] group-hover:shadow-[0_16px_36px_rgba(19,77,74,0.22)] relative z-10">
                 <Image
-                  src="/anzal-avatar.png"
-                  alt="Anzal Shaikh CEO Profile"
+                  src="/tatheer-avatar.png"
+                  alt="Tatheer Fatima CEO Profile"
                   width={144}
                   height={144}
                   className="h-full w-full object-cover rounded-full"
@@ -74,12 +74,12 @@ export default function AboutPage() {
                 <span className="text-[9px] font-extrabold tracking-[0.2em] text-brand-orange uppercase bg-white/80 border border-brand-orange/10 px-3 py-1 rounded-full shadow-sm">
                   FOUNDER &amp; CEO
                 </span>
-                <h3 className="text-2xl font-bold text-brand-blue mt-4">Anzal Shaikh</h3>
+                <h3 className="text-2xl font-bold text-brand-blue mt-4">Tatheer Fatima</h3>
                 <p className="text-xs text-[#134D4A] font-bold mt-1 tracking-wide">Lead Architect &amp; System Engineer</p>
               </div>
 
               <p className="mt-5 text-xs sm:text-sm leading-relaxed text-brand-muted relative z-10 max-w-sm">
-                Anzal is a full-stack engineer and MERN stack expert specializing in cloud systems design, backend architecture, and robust cross-platform mobile apps. He ensures EDENZATECH builds solid, secure, and production-grade core products.
+                Tatheer is a full-stack engineer and MERN stack expert specializing in cloud systems design, backend architecture, and robust cross-platform mobile apps. She ensures EDENZATECH builds solid, secure, and production-grade core products.
               </p>
 
               <div className="mt-6 flex flex-wrap justify-center gap-1.5 relative z-10">
@@ -93,7 +93,7 @@ export default function AboutPage() {
               <div className="mt-10 pt-6 w-full flex items-center justify-between relative z-10 border-t border-[#D2EBE7]/50">
                 <div className="flex gap-2.5">
                   <a
-                    href="https://github.com/iamanzalshaikh"
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-9 w-9 rounded-xl bg-white flex items-center justify-center text-brand-blue hover:text-brand-orange transition-all border border-brand-muted/10 shadow-sm hover:scale-105 active:scale-95"
@@ -103,7 +103,7 @@ export default function AboutPage() {
                     </svg>
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/anzal-shaikh-1a313536b/"
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-9 w-9 rounded-xl bg-white flex items-center justify-center text-brand-blue hover:text-brand-orange transition-all border border-brand-muted/10 shadow-sm hover:scale-105 active:scale-95"
@@ -114,10 +114,10 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <a
-                  href="mailto:enganzalshaikh@gmail.com"
+                  href="mailto:edenzatech@gmail.com"
                   className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#134D4A] hover:text-brand-orange transition-colors hover:underline"
                 >
-                  <Mail className="h-3.5 w-3.5" /> Contact Anzal
+                  <Mail className="h-3.5 w-3.5" /> Contact Tatheer
                 </a>
               </div>
             </article>
@@ -166,7 +166,7 @@ export default function AboutPage() {
               <div className="mt-10 pt-6 w-full flex items-center justify-between relative z-10 border-t border-[#FEEAD9]/50">
                 <div className="flex gap-2.5">
                   <a
-                    href="https://github.com/aftabasif"
+                    href="https://github.com/aftab784"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-9 w-9 rounded-xl bg-white flex items-center justify-center text-brand-blue hover:text-brand-orange transition-all border border-brand-muted/10 shadow-sm hover:scale-105 active:scale-95"
@@ -186,9 +186,12 @@ export default function AboutPage() {
                     </svg>
                   </a>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-brand-orange">
-                  <ExternalLink className="h-3.5 w-3.5" /> Gothenburg, SE
-                </span>
+                <a
+                  href="mailto:edenzatech@gmail.com"
+                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-brand-orange hover:text-brand-blue transition-colors hover:underline"
+                >
+                  <Mail className="h-3.5 w-3.5" /> Contact Aftab
+                </a>
               </div>
             </article>
 

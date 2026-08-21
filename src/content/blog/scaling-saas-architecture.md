@@ -1,7 +1,7 @@
 ---
 title: "How to Scale SaaS Architectures for Millions of Users"
 date: "2026-08-19"
-author: "Anzal Shaikh"
+author: "Tatheer Fatima"
 excerpt: "A deep dive into the engineering principles behind scalable SaaS platforms. Learn how to structure databases, implement caching, and leverage cloud infrastructure."
 category: "Engineering"
 ---

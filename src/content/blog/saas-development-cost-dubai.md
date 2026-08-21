@@ -1,7 +1,7 @@
 ---
 title: "The True Cost of Custom SaaS Development in Dubai (2026 Guide)"
 date: "2026-08-18"
-author: "Anzal Shaikh"
+author: "Tatheer Fatima"
 excerpt: "Planning to build a SaaS platform in the UAE? We break down the real engineering costs, timelines, and hidden expenses of custom software development."
 category: "Business Strategy"
 ---
