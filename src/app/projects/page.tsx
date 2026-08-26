@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Sparkles, ArrowRight, ShieldCheck, Code2, Layers, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -13,6 +13,33 @@ export default function ProjectsPage() {
   const [activeTab, setActiveTab] = useState("all");
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
+
+  // Auto-carousel functionality
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (selectedProject && selectedProject.gallery && selectedProject.gallery.length > 1 && !isPlayingVideo) {
+      interval = setInterval(() => {
+        setCurrentImageIndex((prev) => 
+          prev === selectedProject.gallery!.length - 1 ? 0 : prev + 1
+        );
+      }, 3000);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [selectedProject, isPlayingVideo]);
 
   const filteredProjects = activeTab === "all" 
     ? projectsList 
@@ -81,21 +108,14 @@ export default function ProjectsPage() {
                 >
                   <div>
                     {/* Image container */}
-                    <div 
-                      className="relative aspect-[16/10] w-full overflow-hidden rounded-[1rem] sm:rounded-[1.8rem] bg-white shadow-sm mb-3 sm:mb-5 cursor-pointer"
+                    <ProjectCardImage 
+                      proj={proj} 
                       onClick={() => {
                         setSelectedProject(proj);
                         setCurrentImageIndex(0);
-                      }}
-                    >
-                      <Image
-                        src={proj.image}
-                        alt={`${proj.title} Showcase Mockup`}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-                      />
-                    </div>
+                        setIsPlayingVideo(false);
+                      }} 
+                    />
 
                     {/* Header info */}
                     <div className="px-0.5 sm:px-1.5">
@@ -140,6 +160,7 @@ export default function ProjectsPage() {
                           e.preventDefault();
                           setSelectedProject(proj);
                           setCurrentImageIndex(0);
+                          setIsPlayingVideo(false);
                         }}
                         className={`inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${proj.textClass} hover:opacity-85 bg-transparent border-0 cursor-pointer p-0`}
                       >
@@ -244,6 +265,7 @@ export default function ProjectsPage() {
                   "rgba(0, 0, 0, 0.1) 0px 20px 50px, rgba(255, 255, 255, 0.5) 0px 1px 0px inset, rgba(224, 122, 46, 0.15) 0px 0px 40px",
               }}
               onClick={(e) => e.stopPropagation()}
+              data-lenis-prevent="true"
             >
               <button
                 onClick={() => setSelectedProject(null)}
@@ -253,29 +275,42 @@ export default function ProjectsPage() {
                 <X className="w-5 h-5" />
               </button>
               
-              <div className="w-full md:w-1/2 h-72 md:h-auto relative bg-brand-cream/30 flex items-center justify-center min-h-[300px]">
+              <div className="w-full md:w-1/2 h-64 sm:h-72 md:h-auto relative bg-brand-cream/30 flex items-center justify-center min-h-[240px] sm:min-h-[300px] md:min-h-[auto] shrink-0">
                 <div className="relative w-full h-full group/media">
                   <div className="relative w-full h-full overflow-hidden group/slider bg-brand-cream/50">
-                    {selectedProject.videoUrl ? (
+                    {selectedProject.videoUrl && isPlayingVideo ? (
                       <iframe
-                        src={selectedProject.videoUrl}
-                        className="w-full h-full border-0 animate-fade-in"
+                        src={`${selectedProject.videoUrl}&autoplay=true`}
+                        className="w-full h-full border-0 animate-fade-in bg-black"
                         allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                         allowFullScreen
                         style={{ height: "100%", width: "100%" }}
                       />
                     ) : (
                       <>
-                        <Image
-                          src={
-                            selectedProject.gallery?.length
-                              ? selectedProject.gallery[currentImageIndex]
-                              : selectedProject.image
-                          }
-                          alt={selectedProject.title}
-                          fill
-                          className="object-contain bg-white/90 p-3 transition-all duration-700 hover:scale-[1.02] opacity-100"
-                        />
+                        <div 
+                          className="relative w-full h-full" 
+                          onClick={() => { if (selectedProject.videoUrl) setIsPlayingVideo(true); }}
+                        >
+                          <Image
+                            src={
+                              selectedProject.gallery?.length
+                                ? selectedProject.gallery[currentImageIndex]
+                                : selectedProject.image
+                            }
+                            alt={selectedProject.title}
+                            fill
+                            className={`object-contain bg-white/90 p-3 transition-all duration-700 opacity-100 ${selectedProject.videoUrl ? 'cursor-pointer' : 'hover:scale-[1.02]'}`}
+                          />
+                          
+                          {selectedProject.videoUrl && (
+                            <div className="absolute inset-0 bg-black/10 hover:bg-black/20 transition-colors flex items-center justify-center cursor-pointer group">
+                              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-brand-orange/90 rounded-full flex items-center justify-center text-white shadow-lg backdrop-blur-sm group-hover:scale-110 transition-transform">
+                                <svg className="w-6 h-6 sm:w-8 sm:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                              </div>
+                            </div>
+                          )}
+                        </div>
                         
                         {selectedProject.gallery && selectedProject.gallery.length > 1 && (
                           <>
@@ -334,7 +369,7 @@ export default function ProjectsPage() {
                 </span>
               </div>
               
-              <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col gap-6 select-text overflow-y-auto justify-center">
+              <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col gap-4 sm:gap-6 select-text justify-center">
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold font-manrope text-brand-blue">
                     {selectedProject.title}
@@ -422,5 +457,64 @@ function ChevronArrow({ className }: { className?: string }) {
     <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
     </svg>
+  );
+}
+
+function ProjectCardImage({ proj, onClick }: { proj: ProjectItem, onClick: () => void }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (proj.gallery && proj.gallery.length > 1) {
+      interval = setInterval(() => {
+        setIndex((prev) => prev === proj.gallery!.length - 1 ? 0 : prev + 1);
+      }, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [proj]);
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (proj.gallery) {
+      setIndex((prev) => prev === proj.gallery!.length - 1 ? 0 : prev + 1);
+    }
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (proj.gallery) {
+      setIndex((prev) => prev === 0 ? proj.gallery!.length - 1 : prev - 1);
+    }
+  };
+
+  return (
+    <div 
+      className="relative aspect-[16/10] w-full overflow-hidden rounded-[1rem] sm:rounded-[1.8rem] bg-white shadow-sm mb-3 sm:mb-5 cursor-pointer group/cardimg"
+      onClick={onClick}
+    >
+      <Image
+        src={proj.gallery?.length ? proj.gallery[index] : proj.image}
+        alt={`${proj.title} Showcase Mockup`}
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+        className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+      />
+      {proj.gallery && proj.gallery.length > 1 && (
+        <>
+          <button
+            onClick={handlePrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover/cardimg:opacity-100 transition-all duration-300 hover:bg-black hover:scale-105 border border-white/10 z-20 cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover/cardimg:opacity-100 transition-all duration-300 hover:bg-black hover:scale-105 border border-white/10 z-20 cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </>
+      )}
+    </div>
   );
 }
