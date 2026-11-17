@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/faqs",
     "/case-studies",
     "/book-consultation",
+    "/privacy-policy",
   ];
 
   const services = [
