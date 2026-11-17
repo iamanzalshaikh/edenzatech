@@ -102,10 +102,16 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-neutral-800 bg-neutral-950">
-        <Container className="py-5 text-center text-xs text-neutral-500">
+        <Container className="flex flex-col items-center justify-center gap-2 py-5 text-center text-xs text-neutral-500 sm:flex-row sm:gap-4">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
+          <Link
+            href="/privacy-policy"
+            className="text-neutral-500 transition-colors hover:text-brand-cyan"
+          >
+            Privacy Policy
+          </Link>
         </Container>
       </div>
     </footer>
